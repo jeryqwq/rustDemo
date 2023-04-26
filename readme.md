@@ -9,3 +9,5 @@ https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html
 https://cargo.budshome.com/index.html
 ## 更换cargo源
 https://cargo.budshome.com/reference/source-replacement.html
+## runjs
+v8运行时调用rust函数
