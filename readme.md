@@ -4,10 +4,15 @@ rust语言是前端基础建设的未来，很多情况能够高效的处理许�
 ## 文章推荐
 
 ## 学习地址（官方）
-https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html
+https://www.rustwiki.org.cn/zh-CN
 ## cargo 文档
 https://cargo.budshome.com/index.html
 ## 更换cargo源
 https://cargo.budshome.com/reference/source-replacement.html
 ## runjs
 v8运行时调用rust函数
+
+## wasm 
+rsut编译wasm
+https://rustwasm.github.io/wasm-pack/book/quickstart.html
+

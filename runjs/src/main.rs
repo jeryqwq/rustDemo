@@ -35,14 +35,12 @@ impl deno_core::ModuleLoader for TsModuleLoader {
                 _ => panic!("Unknown extension {:?}", path.extension()),
             };
 
-            // 上の結果に基づいて、必要なら transpile していく
             let code = std::fs::read_to_string(&path)?;
             let code = if should_transpile {
                 let parsed = deno_ast::parse_module(ParseParams {
                     specifier: module_specifier.to_string(),
                     text_info: SourceTextInfo::from_string(code),
                     media_type,
-                    // 以下の 3 つのオプションがよくわからない
                     capture_tokens: false,
                     scope_analysis: false,
                     maybe_syntax: None,

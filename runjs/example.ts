@@ -26,7 +26,7 @@ async function test() {
   await runjs.writeFile(path, "I can write to file.");
   const contents = await runjs.readFile(path);
   console.log("Read from a file", contents);
-  runjs.removeFile(path);
-  console.log("File removed");
+  // runjs.removeFile(path);
+  // console.log("File removed");
 }
 test()
