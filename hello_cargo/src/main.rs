@@ -1,10 +1,11 @@
-
-fn main () {
-  let s:&String = &String::from("hello");
-  test(&s);
-  println!("S2:{}", s);
-}
-
-fn test (s: &String) {
- println!("S:{}", s);
-}
+fn main() {
+  fn test<'a>() {
+      let r:&'a i32;
+      {                     //          |
+          let x:&'a i32 = &5;        // -+-- 'b  |
+          r = &x;
+      }                     // -+       |
+      println!("r: {}", r); //          |
+  }
+  test()
+}   
