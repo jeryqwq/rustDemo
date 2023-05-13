@@ -34,3 +34,23 @@ fn getLonger<'b> (a:&'b str, b:&'b str) -> &'b str {
 }
 
 
+
+/**
+#[derive(Debug)]
+struct Foo;
+
+impl Foo {
+    fn mutate_and_share(&mut self) -> &Self {
+        &*self
+    }
+    fn share(&self) {}
+}
+
+fn main() {
+    let mut foo  = Foo;
+    let loan = foo.mutate_and_share();
+    foo.share(); //cannot borrow `foo` as immutable because it is also borrowed as mutable
+    println!("{:?}", loan);
+}
+
+ */
