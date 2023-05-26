@@ -26,3 +26,33 @@ v8运行时调用rust函数： https://deno.com/blog/roll-your-own-javascript-ru
 rsut编译wasm,可处理一些cpu密集型任务。
 https://rustwasm.github.io/wasm-pack/book/quickstart.html
 
+安装交叉编译器:
+```bash
+rustup target add wasm32-unknown-unknown
+```
+将cargo.toml库类型改为cdylib
+```
+[lib]
+crate-type = ["cdylib"]
+```
+在lib.rs中写入测试斐波那契函数
+```rs
+
+```
+
+编译wasm
+
+```bash
+cargo build --release --target wasm32-unknown-unknown
+```
+
+### 在浏览器中使用
+
+```js
+var importObject = { imports: { imported_func: arg => console.log(arg) } };
+
+WebAssembly.instantiateStreaming(fetch('wasm.wasm'), importObject)
+.then(obj => {
+  console.log(obj.instance.exports.fbin(10))
+});
+```

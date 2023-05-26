@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //JS实现的斐波那契数列
+  function fnbin(x) {
+            if (x <= 1) {
+                return 1;
+            } else {
+                return fnbin(x - 1) + fnbin(x - 2);
+            }
+        }
+
+var importObject = { imports: { imported_func: arg => console.log(arg) } };
+var count = 30
+WebAssembly.instantiateStreaming(fetch('wasm.wasm'), importObject)
+.then(obj => {
+  console.time('startWasm')
+  console.log(obj.instance.exports.fbin(count))
+  console.timeEnd('startWasm')
+  console.time('startJs')
+  console.log(fnbin(count))
+  console.timeEnd('startJs')
+});
+  </script>
+
+</body>
+</html>
