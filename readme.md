@@ -37,6 +37,14 @@ crate-type = ["cdylib"]
 ```
 在lib.rs中写入测试斐波那契函数
 ```rs
+#[no_mangle]
+pub extern fn fbin(x: i32) -> i32 {
+    if x <= 1 {
+        return 1;
+    } else {
+        return fbin(x - 1) + fbin(x - 2);
+    }
+}
 
 ```
 
@@ -47,7 +55,7 @@ cargo build --release --target wasm32-unknown-unknown
 ```
 
 ### 在浏览器中使用
-
+https://developer.mozilla.org/zh-CN/docs/WebAssembly/JavaScript_interface/instantiateStreaming
 ```js
 var importObject = { imports: { imported_func: arg => console.log(arg) } };
 

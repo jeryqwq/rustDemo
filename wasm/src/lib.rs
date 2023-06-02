@@ -1,8 +1,35 @@
-#[no_mangle]
-pub extern fn fbin(x: i32) -> i32 {
-    if x <= 1 {
-        return 1;
-    } else {
-        return fbin(x - 1) + fbin(x - 2);
-    }
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+extern "C" {
+    fn alert(s: &str);
+}
+
+
+// Called when the wasm module is instantiated
+#[wasm_bindgen(start)]
+pub fn main() -> Result<(), JsValue> {
+    // Use `web_sys`'s global `window` function to get a handle on the global
+    // window object.
+    let window = web_sys::window().expect("no global `window` exists");
+    let document = window.document().expect("should have a document on window");
+    let body = document.body().expect("document should have a body");
+
+    // Manufacture the element we're gonna append
+    let val = document.create_element("p")?;
+    val.set_inner_html("Hello from Rust!");
+
+    body.append_child(&val)?;
+
+    Ok(())
+}
+
+#[wasm_bindgen]
+pub fn add(a: u32, b: u32) -> u32 {
+    a + b
+}
+
+#[wasm_bindgen]
+pub fn greet(name: &str) {
+    alert(&format!("Hello, {}!", name));
 }

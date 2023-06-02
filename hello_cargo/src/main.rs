@@ -1,13 +1,14 @@
+
+
 fn main() {
-  let mut s: String = String::from("hello");
-
-  let r1 = &s;
-  let r2 = &s;
-  println!("{r1} and {r2}");
-  // 新编译器中，r1,r2作用域在这里结束
-
-  let r3 = &mut s;
-  *r3 = String::from("hello2");
-  println!("{}", r3); 
+  let  z = 20;
+  let refZ = & z;
+  let sum = |x: i32, y: i32| -> i32 {
+    return x + y + *refZ
+  };
+  println!("{}", sum(3,2));
+  let example_closure = |x | x;
+  let s = example_closure(String::from("hello"));
+  let n = example_closure(5);
 }
 

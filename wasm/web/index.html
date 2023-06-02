@@ -19,14 +19,15 @@
 
 var importObject = { imports: { imported_func: arg => console.log(arg) } };
 var count = 30
-WebAssembly.instantiateStreaming(fetch('wasm.wasm'), importObject)
+WebAssembly.instantiateStreaming(fetch('/test3.wasm'), importObject)
 .then(obj => {
-  console.time('startWasm')
-  console.log(obj.instance.exports.fbin(count))
-  console.timeEnd('startWasm')
-  console.time('startJs')
-  console.log(fnbin(count))
-  console.timeEnd('startJs')
+  console.log(obj.instance.exports.add(3,2))
+  // console.time('startWasm')
+  // console.log(obj.instance.exports.fbin(count))
+  // console.timeEnd('startWasm')
+  // console.time('startJs')
+  // console.log(fnbin(count))
+  // console.timeEnd('startJs')
 });
   </script>
 
